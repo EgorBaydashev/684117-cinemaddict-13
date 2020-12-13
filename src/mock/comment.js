@@ -1,31 +1,31 @@
 import {getRandomItem, generateDate} from '../utils.js';
 
-const commentsText = [
+const COMMENTS_TEXT = [
   `Interesting setting and a good cast`,
   `Booooooooooring`,
   `Very very old. Meh`,
   `Almost two hours? Seriously?`
 ];
 
-const commentsEmotion = [
+const COMMENTS_EMOTION = [
   `smile`,
   `sleeping`,
   `puke`,
   `angry`
 ];
 
-const commentsAuthor = [
+const COMMENTS_AUTHOR = [
   `Tim Macoveev`,
   `John Doe`,
   `Michael Random`,
   `Austin Powers`
 ];
 
-export const comment = () => {
+export const getComment = () => {
   return {
-    text: getRandomItem(commentsText),
-    emotion: getRandomItem(commentsEmotion),
-    author: getRandomItem(commentsAuthor),
+    text: getRandomItem(COMMENTS_TEXT),
+    emotion: getRandomItem(COMMENTS_EMOTION),
+    author: getRandomItem(COMMENTS_AUTHOR),
     date: generateDate(),
   };
 };

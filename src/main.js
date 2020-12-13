@@ -5,14 +5,15 @@ import {createFilmListTemplate} from './view/film-list.js';
 import {createFilmCardTemplate} from './view/film-card.js';
 import {createShowMoreButtonTemplate} from './view/show-more-button.js';
 import {createPopupTemplate} from './view/popup.js';
-import {filmCard} from './mock/film-card.js';
+import {createStatsTemplate} from './view/stats.js';
+import {createFilmCard} from './mock/film-card.js';
 import {generateFilter} from './mock/filter.js';
 
 const CARDS_COUNT = 17;
 const FILMS_COUNT_PER_STEP = 5;
 
 let renderedFilmsCount = FILMS_COUNT_PER_STEP;
-const films = new Array(CARDS_COUNT).fill().map(filmCard);
+const films = new Array(CARDS_COUNT).fill().map(createFilmCard);
 
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
@@ -56,7 +57,9 @@ for (let i = 0; i < FILMS_COUNT_PER_STEP; i++) {
   render(filmsListContainer, createFilmCardTemplate(films[i]), `beforeend`);
 }
 
-render(siteMain, createPopupTemplate(films), `beforeend`);
+render(siteMain, createPopupTemplate(films[0]), `beforeend`);
+
+render(siteMain, createStatsTemplate(), `beforeend`);
 
 const createFooterStatistics = (filmsCount) => {
   return `<p>${filmsCount} movies inside</p>`;

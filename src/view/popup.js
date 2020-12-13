@@ -14,12 +14,12 @@ export const createPopupTemplate = (films) => {
     description,
     ageRating,
     comments
-  } = films[0];
+  } = films;
 
   const createGenres = () => {
     return genres.map((genre) => {
       return `<span class="film-details__genre">${genre}</span>`;
-    });
+    }).join(``);
   };
 
   const createComments = () => {
@@ -39,6 +39,27 @@ export const createPopupTemplate = (films) => {
         </div>
       </li>`;
     }).join(``);
+  };
+
+  const createPopupButtons = () => {
+    const popupButtonsDescription = [
+      {
+        buttonTitle: `Add to watchlist`,
+        name: `watchlist`
+      },
+      {
+        buttonTitle: `Already watched`,
+        name: `watched`
+      },
+      {
+        buttonTitle: `Add to favorites`,
+        name: `favorite`
+      }
+    ];
+
+    return popupButtonsDescription.map(({buttonTitle, name}) => `
+    <input type="checkbox" class="film-details__control-input visually-hidden" id="${name}" name="${name}">
+    <label for="${name}" class="film-details__control-label film-details__control-label--${name}">${buttonTitle}</label>`).join(``);
   };
 
   return `<section class="film-details visually-hidden">
@@ -94,7 +115,7 @@ export const createPopupTemplate = (films) => {
             <tr class="film-details__row">
               <td class="film-details__term">${genres.length === 1 ? `Genre` : `Genres`}</td>
               <td class="film-details__cell">
-                ${createGenres().join(``)}
+                ${createGenres()}
             </tr>
           </table>
 
@@ -105,14 +126,7 @@ export const createPopupTemplate = (films) => {
       </div>
 
       <section class="film-details__controls">
-        <input type="checkbox" class="film-details__control-input visually-hidden" id="watchlist" name="watchlist">
-        <label for="watchlist" class="film-details__control-label film-details__control-label--watchlist">Add to watchlist</label>
-
-        <input type="checkbox" class="film-details__control-input visually-hidden" id="watched" name="watched">
-        <label for="watched" class="film-details__control-label film-details__control-label--watched">Already watched</label>
-
-        <input type="checkbox" class="film-details__control-input visually-hidden" id="favorite" name="favorite">
-        <label for="favorite" class="film-details__control-label film-details__control-label--favorite">Add to favorites</label>
+        ${createPopupButtons()}
       </section>
     </div>
 
