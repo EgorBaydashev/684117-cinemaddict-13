@@ -1,4 +1,4 @@
-export const createPopupTemplate = (films) => {
+export const createPopupTemplate = (film) => {
   const {
     poster,
     title,
@@ -14,7 +14,7 @@ export const createPopupTemplate = (films) => {
     description,
     ageRating,
     comments
-  } = films;
+  } = film;
 
   const createGenres = () => {
     return genres.map((genre) => {

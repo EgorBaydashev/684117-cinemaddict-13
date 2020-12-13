@@ -1,26 +1,31 @@
 export const createFilmCardTemplate = (films) => {
-  const {poster, title, rating, releaseYear, runtime, genres, description, comments} = films;
+  const {poster, title, rating, releaseYear, runtime, genres, description, comments, isInWatchlist, isWatched, isFavorite} = films;
 
-  const descriptionShort = () => description.length > 140 ? `${description.slice(0, 139)}...` : description;
+  const descriptionShort = () => {
+    return description.length > 140 ? `${description.slice(0, 139)}...` : description;
+  };
+
+  const cardButtonsDescription = [
+    {
+      buttonTitle: `Add to watchlist`,
+      className: `add-to-watchlist`,
+      isActive: isInWatchlist
+    },
+    {
+      buttonTitle: `Mark as watched`,
+      className: `mark-as-watched`,
+      isActive: isWatched
+    },
+    {
+      buttonTitle: `Mark as favorite`,
+      className: `favorite`,
+      isActive: isFavorite
+    }
+  ];
 
   const createCardButtons = () => {
-    const cardButtonsDescription = [
-      {
-        buttonTitle: `Add to watchlist`,
-        className: `add-to-watchlist`,
-      },
-      {
-        buttonTitle: `Mark as watched`,
-        className: `mark-as-watched`,
-      },
-      {
-        buttonTitle: `Mark as favorite`,
-        className: `favorite`,
-      }
-    ];
-
-    return cardButtonsDescription.map(({buttonTitle, className}) =>
-      `<button class="film-card__controls-item button film-card__controls-item--${className}" type="button">${buttonTitle}</button>`).join(``);
+    return cardButtonsDescription.map(({buttonTitle, className, isActive}) =>
+      `<button class="film-card__controls-item button film-card__controls-item--${className} ${isActive && `film-card__controls-item--active`}" type="button">${buttonTitle}</button>`).join(``);
   };
 
   return `<article class="film-card">

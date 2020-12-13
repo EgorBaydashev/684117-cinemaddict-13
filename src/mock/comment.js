@@ -26,6 +26,6 @@ export const getComment = () => {
     text: getRandomItem(COMMENTS_TEXT),
     emotion: getRandomItem(COMMENTS_EMOTION),
     author: getRandomItem(COMMENTS_AUTHOR),
-    date: generateDate(),
+    date: generateDate()
   };
 };

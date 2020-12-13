@@ -1,7 +1,9 @@
 import {getRandomInteger, getRandomItem, generateDate} from '../utils.js';
 import {getComment} from './comment.js';
 
-const generateShortArray = (arr) => arr.sort(() => Math.random() - 0.5).slice(0, getRandomInteger(1, arr.length));
+const generateShortArray = (arr) => {
+  return arr.sort(() => Math.random() - 0.5).slice(0, getRandomInteger(1, arr.length));
+};
 
 const TITLES = [
   `The Dance of Life`,
