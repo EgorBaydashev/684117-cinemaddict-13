@@ -1,4 +1,6 @@
-export const createPopupTemplate = (film) => {
+import {createElement} from '../utils.js';
+
+const createPopupTemplate = (film) => {
   const {
     poster,
     title,
@@ -172,3 +174,26 @@ export const createPopupTemplate = (film) => {
   </form>
 </section>`;
 };
+
+export default class Popup {
+  constructor(film) {
+    this._film = film;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createPopupTemplate(this._film);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

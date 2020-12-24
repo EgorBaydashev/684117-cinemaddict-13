@@ -23,12 +23,6 @@ export const createElement = (template) => {
   return newElement.firstChild;
 };
 
-export const renderTemplate = (container, template, place) => {
-  container.insertAdjacentHTML(place, template);
-};
-
-
-
 export const getRandomInteger = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
