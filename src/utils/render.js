@@ -14,7 +14,14 @@ export const render = (container, child, place) => {
     child = child.getElement();
   }
 
-  container.insertAdjacentElement(place, child);
+  switch (place) {
+    case RenderPosition.AFTERBEGIN:
+      container.prepend(child);
+      break;
+    case RenderPosition.BEFOREEND:
+      container.append(child);
+      break;
+  }
 };
 
 export const createElement = (template) => {
