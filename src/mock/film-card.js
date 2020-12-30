@@ -1,4 +1,4 @@
-import {getRandomInteger, getRandomItem, generateDate} from '../utils.js';
+import {getRandomInteger, getRandomItem, generateDate} from '../utils/common.js';
 import {getComment} from './comment.js';
 
 const generateShortArray = (arr) => {

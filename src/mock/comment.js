@@ -1,4 +1,4 @@
-import {getRandomItem, generateDate} from '../utils.js';
+import {getRandomItem, generateDate} from '../utils/common.js';
 
 const COMMENTS_TEXT = [
   `Interesting setting and a good cast`,
